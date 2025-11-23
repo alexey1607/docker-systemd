@@ -4,6 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
+# This is a simple demonstration service that logs a message every 30 seconds
+# In production, replace this with your actual service command
 ExecStart=/usr/bin/bash -c 'while true; do echo "Hello from systemd service at $(date)"; sleep 30; done'
 Restart=always
 RestartSec=10

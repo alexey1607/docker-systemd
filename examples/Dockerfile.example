@@ -11,7 +11,7 @@ RUN apt-get update && \
 
 # Remove unnecessary systemd services
 RUN cd /lib/systemd/system/sysinit.target.wants/ && \
-    ls | grep -v systemd-tmpfiles-setup.service | xargs rm -f
+    (ls | grep -v systemd-tmpfiles-setup.service | xargs rm -f || true)
 
 RUN rm -f /lib/systemd/system/multi-user.target.wants/* \
     /etc/systemd/system/*.wants/* \
