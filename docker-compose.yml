@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  systemd:
+    build: .
+    image: systemd-docker:latest
+    container_name: systemd-container
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    stop_signal: SIGRTMIN+3
+    tty: true

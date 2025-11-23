@@ -1,0 +1,12 @@
+[Unit]
+Description=Example Hello World Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c 'while true; do echo "Hello from systemd service at $(date)"; sleep 30; done'
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
