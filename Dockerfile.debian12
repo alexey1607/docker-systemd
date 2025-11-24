@@ -4,7 +4,7 @@ ENV container docker
 STOPSIGNAL SIGRTMIN+3
 
 RUN apt-get update && \
-    apt-get install -y systemd systemd-sysv dbus && \
+    apt-get install -y systemd systemd-sysv dbus rsync && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
