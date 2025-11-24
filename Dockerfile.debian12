@@ -1,6 +1,6 @@
 FROM debian:12.12
 
-ENV container docker
+ENV container docker  
 STOPSIGNAL SIGRTMIN+3
 
 RUN apt-get update && \
@@ -9,5 +9,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 VOLUME [ "/sys/fs/cgroup" ]
+
+RUN mkdir -p /tmp && chmod 1777 /tmp
 
 CMD ["/sbin/init"]
