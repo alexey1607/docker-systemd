@@ -29,6 +29,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile.debian12
+          file: ./Dockerfile.debian13
           push: true
-          tags: alexey1607/systemd:debian12
+          tags: alexey1607/systemd:debian13
