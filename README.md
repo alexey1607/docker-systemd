@@ -1,12 +1,17 @@
-# docker-systemd
+### Контейнер с systemd
 
-### Запуск контейнера
+#### Образа
+```
+debian12: alexey1607/systemd:debian12
+debian13: alexey1607/systemd:debian13
+```
 
+#### Запуск
 ```
 docker run -d \
   --privileged \
   --cgroupns=host \
-  -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+  -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
   --name debian-systemd \
-  debian12-systemd
+  alexey1607/systemd:debian12
 ```

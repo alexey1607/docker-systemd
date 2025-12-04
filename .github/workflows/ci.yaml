@@ -9,6 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - image_name: "debian13"
+            dockerfile_path: "./Dockerfile.debian13"
+          - image_name: "debian12"
+            dockerfile_path: "./Dockerfile.debian12"
 
     permissions:
       contents: read
@@ -29,6 +36,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile.debian12
+          file: ${{ matrix.dockerfile_path }}
           push: true
-          tags: alexey1607/systemd:debian12
+          tags: |
+            alexey1607/systemd:${{ matrix.image_name }}
